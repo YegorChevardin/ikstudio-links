@@ -1,1 +1,26 @@
-/* You can add global styles to this file, and also import other style files */
+@import "tailwindcss";
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300..700&display=swap');
+
+@font-face {
+    font-family: 'Papyrus';
+    src: url('/assets/fonts/papyrus.ttf') format('truetype');
+}
+
+.background-dark {
+    background: #141414;
+}
+
+.papyrus-font {
+    font-family: 'Papyrus', fantasy;
+}
+
+.cormorant-garamond-font {
+  font-family: "Cormorant Garamond", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+.svg-white {
+    filter: invert(1) brightness(2);
+}
