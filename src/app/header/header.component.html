@@ -1,92 +1,42 @@
-<header class="w-full">
-  <div
-    class="py-1 w-full text-center background-green text-white flex justify-around items-center space-x-10"
-  >
-    <div class="flex items-center space-x-2 justify-baseline">
+
+<header class="w-100">
+  <div class="w-100 text-center background-dark text-white d-flex justify-content-around align-items-center">
+    <div class="d-flex align-items-center gap-2">
       <span><strong>IK Studio</strong> stands with Ukraine</span>
-      <img src="/assets/ukraine.svg" alt="Ukrainian Flag" class="w-7 h-7" />
+      <img src="/assets/ukraine.svg" alt="Ukrainian Flag" style="width: 28px; height: 28px;" />
     </div>
   </div>
-  <div
-    class="relative w-screen h-screen overflow-hidden flex items-center justify-center"
-    style="background: #000"
-  >
-    <div class="absolute inset-0 w-full h-full header-banner"></div>
-
-    <div
-      class="relative z-10 flex flex-col items-center justify-center w-full h-full"
-    >
-      <div class="flex flex-col items-center justify-center mb-10 space-y-3">
-        <img
-          src="/assets/tempest-reef-logo.svg"
-          alt="Tempest Reef Logo"
-          class="w-30 h-30"
-        />
-        <h1
-          class="text-6xl md:text-8xl mb-3 text-white papyrus-font text-center"
-        >
-          TEMPEST REEF
-        </h1>
-        <div class="text-2xl md:text-4xl text-gray-300 papyrus-font">
+  <div class="position-relative vw-100 vh-100 overflow-hidden d-flex align-items-center justify-content-center" style="background: #000;">
+    <div class="position-absolute top-0 start-0 w-100 h-100 header-banner"></div>
+    <div class="position-relative z-1 d-flex flex-column align-items-center justify-content-center w-100 h-100">
+      <div class="d-flex flex-column align-items-center justify-content-center mb-3 gap-2">
+        <img src="/assets/tempest-reef-logo.svg" alt="Tempest Reef Logo" style="width: 120px; height: 120px;" />
+        <h1 class="display-1 mb-1 text-white papyrus-font text-center">TEMPEST REEF</h1>
+        <div class="h2 papyrus-font" style="color: #b9bdbd">
           <span>Survive or get lost to the sea</span>
         </div>
       </div>
-      <div class="background-gradient p-2">
-        <div
-          class="text-1xl md:text-2xl text-white text-center cormorant-garamond-font mx-8"
-        >
-          <span>Launching in:</span>
-          <br />
+      <div class="p-2 background-gradient px-5">
+        <div class="h4 text-white text-center cormorant-garamond-font mx-3">
+          <span>Launching in:</span><br />
           <span>{{ days }} days </span>
           <span>{{ hours }} hours </span>
           <span>{{ minutes }} minutes </span>
           <span>{{ seconds }} seconds</span>
         </div>
       </div>
-      <div class="mt-8 flex space-x-6">
-        <a
-          href="https://steamcommunity.com/groups/ikstudio"
-          target="_blank"
-          aria-label="Steam"
-        >
-          <img
-            src="/assets/steam.svg"
-            alt="Steam"
-            class="w-10 h-10 hover:scale-110 transition-transform svg-white"
-          />
+      <div class="mt-5 d-flex gap-4">
+        <a href="https://steamcommunity.com/groups/ikstudio" target="_blank" aria-label="Steam">
+          <img class="svg-white" src="/assets/steam.svg" alt="Steam" style="width: 40px; height: 40px; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'" />
         </a>
-        <a
-          href="https://discord.gg/G6c26KQzqg"
-          target="_blank"
-          aria-label="Discord"
-        >
-          <img
-            src="/assets/discord.svg"
-            alt="Discord"
-            class="w-10 h-10 hover:scale-110 transition-transform svg-white"
-          />
+        <a href="https://discord.gg/G6c26KQzqg" target="_blank" aria-label="Discord">
+          <img class="svg-white" src="/assets/discord.svg" alt="Discord" style="width: 40px; height: 40px; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'" />
         </a>
-        <a
-          href="https://www.threads.com/@ikstudio.ua"
-          target="_blank"
-          aria-label="Threads"
-        >
-          <img
-            src="/assets/threads.svg"
-            alt="Threads"
-            class="w-10 h-10 hover:scale-110 transition-transform svg-white"
-          />
+        <a href="https://www.threads.com/@ikstudio.ua" target="_blank" aria-label="Threads">
+          <img class="svg-white" src="/assets/threads.svg" alt="Threads" style="width: 40px; height: 40px; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'" />
         </a>
-        <a
-          href="https://x.com/ikstudioukr"
-          target="_blank"
-          aria-label="Twitter"
-        >
-          <img
-            src="/assets/x.svg"
-            alt="Twitter"
-            class="w-10 h-10 hover:scale-110 transition-transform svg-white"
-          />
+        <a href="https://x.com/ikstudioukr" target="_blank" aria-label="Twitter">
+          <img class="svg-white" src="/assets/x.svg" alt="Twitter" style="width: 40px; height: 40px; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'" />
         </a>
       </div>
     </div>
