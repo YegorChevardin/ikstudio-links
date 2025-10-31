@@ -1,0 +1,74 @@
+<section class="feedback-section">
+  <div class="container-fluid h-100">
+    <div class="row h-100 align-items-center justify-content-center">
+      <div class="col-12 col-md-10 col-lg-8 col-xl-6">
+        <div class="feedback-container">
+          <div class="form-element text-center mb-5">
+            <h2 class="display-4 text-white papyrus-font mb-3">Share Your Feedback</h2>
+            <p class="lead text-light-gray">Help us make Tempest Reef better. We'd love to hear from you!</p>
+          </div>
+
+          <form (ngSubmit)="onSubmit()" #feedbackForm="ngForm" class="feedback-form">
+            <div class="form-element mb-4">
+              <label for="name" class="form-label text-white">Your Name</label>
+              <input 
+                type="text" 
+                class="form-control form-input" 
+                id="name" 
+                name="name"
+                [(ngModel)]="formData.name"
+                placeholder="Enter your name"
+                required
+              />
+            </div>
+
+            <div class="form-element mb-4">
+              <label for="email" class="form-label text-white">Email Address</label>
+              <input 
+                type="email" 
+                class="form-control form-input" 
+                id="email" 
+                name="email"
+                [(ngModel)]="formData.email"
+                placeholder="your@email.com"
+                required
+              />
+            </div>
+
+            <div class="form-element mb-4">
+              <label for="message" class="form-label text-white">Message</label>
+              <textarea 
+                class="form-control form-input" 
+                id="message" 
+                name="message"
+                [(ngModel)]="formData.message"
+                rows="6"
+                placeholder="Tell us what you think..."
+                required
+              ></textarea>
+            </div>
+
+            <div class="form-element text-center">
+              <button 
+                type="submit" 
+                class="btn btn-submit px-5 py-3"
+                [disabled]="!feedbackForm.valid || isSubmitting"
+              >
+                <span *ngIf="!isSubmitting && !submitSuccess">Send Feedback</span>
+                <span *ngIf="isSubmitting">
+                  <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                  Sending...
+                </span>
+                <span *ngIf="submitSuccess">✓ Sent Successfully!</span>
+              </button>
+            </div>
+
+            <div *ngIf="submitSuccess" class="alert alert-success mt-4 text-center animate-fade-in">
+              Thank you for your feedback! We appreciate your input.
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

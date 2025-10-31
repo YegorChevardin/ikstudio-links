@@ -1,5 +1,5 @@
-import { Component, OnInit, OnDestroy, NgZone } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, OnInit, OnDestroy, NgZone, AfterViewInit, ElementRef, Renderer2, Inject, PLATFORM_ID } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-header',
@@ -8,19 +8,38 @@ import { CommonModule } from '@angular/common';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit, OnDestroy {
+export class HeaderComponent implements OnInit, OnDestroy, AfterViewInit {
   days: number = 0;
   hours: number = 0;
   minutes: number = 0;
   seconds: number = 0;
   private timerId: any;
+  
+  titleText: string = 'TEMPEST REEF';
+  titleChars: string[] = [];
+  private isBrowser: boolean;
 
-  constructor(private ngZone: NgZone) {}
+  constructor(
+    private ngZone: NgZone, 
+    private el: ElementRef, 
+    private renderer: Renderer2,
+    @Inject(PLATFORM_ID) platformId: Object
+  ) {
+    this.titleChars = this.titleText.split('');
+    this.isBrowser = isPlatformBrowser(platformId);
+  }
 
   ngOnInit() {
     this.ngZone.runOutsideAngular(() => {
       this.updateTimer();
     });
+  }
+
+  ngAfterViewInit() {
+    if (this.isBrowser) {
+      this.animateTitle();
+      this.animateSubtitle();
+    }
   }
 
   ngOnDestroy() {
@@ -48,6 +67,24 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.timerId = setTimeout(() => {
       this.updateTimer();
     }, 1000);
+  }
+
+  private animateTitle() {
+    const chars = this.el.nativeElement.querySelectorAll('.title-char');
+    
+    // Add CSS animation class to each character with staggered delay
+    chars.forEach((char: HTMLElement, index: number) => {
+      this.renderer.addClass(char, 'animated');
+      this.renderer.setStyle(char, 'animation-delay', `${index * 0.05}s`);
+    });
+  }
+
+  private animateSubtitle() {
+    const subtitle = this.el.nativeElement.querySelector('.subtitle');
+    
+    if (subtitle) {
+      this.renderer.addClass(subtitle, 'animated-subtitle');
+    }
   }
 
 }
