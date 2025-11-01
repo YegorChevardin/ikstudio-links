@@ -1,0 +1,58 @@
+<section class="features-section">
+  <div class="container-fluid">
+    <div class="row align-items-center justify-content-center">
+      <div class="col-12 col-lg-10 col-xl-8">
+        <div class="features-container">
+          <!-- Section Title -->
+          <div class="text-center mb-5">
+            <h2 class="display-4 text-white papyrus-font mb-3">Game Features</h2>
+            <p class="lead text-light-gray">Experience the adventure that awaits you</p>
+          </div>
+
+          <!-- Carousel Content -->
+          <div class="carousel-wrapper" *ngIf="currentFeature">
+            <!-- Navigation Arrows -->
+            <button 
+              class="carousel-nav carousel-nav-prev" 
+              (click)="previousFeature()"
+              aria-label="Previous feature"
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="15 18 9 12 15 6"></polyline>
+              </svg>
+            </button>
+
+            <!-- Feature Content -->
+            <app-feature 
+              [label]="currentFeature.label" 
+              [description]="currentFeature.description"
+            ></app-feature>
+
+            <button 
+              class="carousel-nav carousel-nav-next" 
+              (click)="nextFeature()"
+              aria-label="Next feature"
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </button>
+          </div>
+
+          <!-- Carousel Indicators -->
+          <div class="carousel-indicators" *ngIf="features.length > 0">
+            <button
+              *ngFor="let feature of features; let i = index"
+              class="indicator"
+              [class.active]="i === currentFeatureIndex"
+              (click)="goToFeature(i)"
+              [attr.aria-label]="'Go to feature ' + (i + 1)"
+            >
+              <span class="indicator-progress" *ngIf="i === currentFeatureIndex"></span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
