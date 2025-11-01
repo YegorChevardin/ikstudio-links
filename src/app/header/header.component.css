@@ -5,6 +5,12 @@
 .header-banner {
     background: url('/assets/bg-masthead.png') center center / cover no-repeat;
     opacity: 0.5;
+    transition: transform 0.1s ease-out;
+    will-change: transform;
+}
+
+.header-banner.parallax-enabled {
+    transform: scale(1.1);
 }
 
 .background-black {
@@ -19,6 +25,27 @@
 .title-container {
     perspective: 1000px;
     transform-style: preserve-3d;
+    white-space: nowrap;
+    overflow: visible;
+}
+
+/* Responsive font sizes for title */
+@media (max-width: 768px) {
+    .title-container {
+        font-size: 2.5rem !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .title-container {
+        font-size: 2rem !important;
+    }
+}
+
+@media (max-width: 400px) {
+    .title-container {
+        font-size: 1.5rem !important;
+    }
 }
 
 .title-char {
@@ -30,7 +57,19 @@
 .title-char.animated {
     opacity: 0;
     animation: titleFadeIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards,
-               titleWave 1.5s ease-in-out 2s infinite alternate;
+               titleWave 4s ease-in-out 2s infinite alternate;
+}
+
+.logo-animated {
+    opacity: 1;
+    transform: scale(1);
+    transition: all 0.3s ease;
+}
+
+.logo-animated.animated-logo {
+    opacity: 0;
+    animation: logoFadeIn 1s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.5s forwards,
+               logoFloat 5s ease-in-out 2.5s infinite alternate;
 }
 
 @keyframes titleFadeIn {
@@ -41,6 +80,26 @@
     to {
         opacity: 1;
         transform: scale(1);
+    }
+}
+
+@keyframes logoFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.3) rotate(-10deg);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+    }
+}
+
+@keyframes logoFloat {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-8px) rotate(2deg);
     }
 }
 
@@ -60,7 +119,7 @@
 .subtitle.animated-subtitle {
     opacity: 0;
     animation: subtitleFadeIn 1s ease-out 1.5s forwards,
-               subtitleFloat 2s ease-in-out 3s infinite alternate;
+               subtitleFloat 4.5s ease-in-out 3s infinite alternate;
 }
 
 @keyframes subtitleFadeIn {
@@ -80,5 +139,40 @@
     }
     50% {
         transform: translateY(-5px);
+    }
+}
+
+/* Additional responsive adjustments */
+@media (max-width: 768px) {
+    .subtitle {
+        font-size: 1.2rem !important;
+    }
+    
+    .background-gradient .h4 {
+        font-size: 1rem !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .subtitle {
+        font-size: 1rem !important;
+    }
+    
+    .background-gradient .h4 {
+        font-size: 0.9rem !important;
+    }
+    
+    .background-gradient {
+        margin: 0 1rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .subtitle {
+        font-size: 0.9rem !important;
+    }
+    
+    .background-gradient .h4 {
+        font-size: 0.8rem !important;
     }
 }

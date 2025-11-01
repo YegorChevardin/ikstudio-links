@@ -1,11 +1,10 @@
-import { Component, OnInit, OnDestroy, NgZone, AfterViewInit, ElementRef, Renderer2, Inject, PLATFORM_ID } from '@angular/core';
+import { Component, OnInit, OnDestroy, NgZone, AfterViewInit, ElementRef, Renderer2, Inject, PLATFORM_ID, HostListener } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
-import { SwipeElementComponent } from "../swipe-element/swipe-element.component";
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule, SwipeElementComponent],
+  imports: [CommonModule],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
@@ -38,8 +37,10 @@ export class HeaderComponent implements OnInit, OnDestroy, AfterViewInit {
 
   ngAfterViewInit() {
     if (this.isBrowser) {
+      this.animateLogo();
       this.animateTitle();
       this.animateSubtitle();
+      this.initParallax();
     }
   }
 
@@ -79,12 +80,49 @@ export class HeaderComponent implements OnInit, OnDestroy, AfterViewInit {
     });
   }
 
+  private animateLogo() {
+    const logo = this.el.nativeElement.querySelector('.logo-animated');
+    
+    if (logo) {
+      this.renderer.addClass(logo, 'animated-logo');
+    }
+  }
+
   private animateSubtitle() {
     const subtitle = this.el.nativeElement.querySelector('.subtitle');
     
     if (subtitle) {
       this.renderer.addClass(subtitle, 'animated-subtitle');
     }
+  }
+
+  private initParallax() {
+    const headerBanner = this.el.nativeElement.querySelector('.header-banner');
+    if (headerBanner) {
+      this.renderer.addClass(headerBanner, 'parallax-enabled');
+    }
+  }
+
+  @HostListener('mousemove', ['$event'])
+  onMouseMove(event: MouseEvent) {
+    if (!this.isBrowser) return;
+    
+    const headerBanner = this.el.nativeElement.querySelector('.header-banner');
+    if (!headerBanner) return;
+
+    // Get the header dimensions
+    const header = this.el.nativeElement.querySelector('header');
+    const rect = header.getBoundingClientRect();
+    
+    // Calculate mouse position relative to the header center
+    const x = (event.clientX - rect.left - rect.width / 2) / rect.width;
+    const y = (event.clientY - rect.top - rect.height / 2) / rect.height;
+    
+    // Apply parallax effect (adjust multiplier for intensity)
+    const moveX = x * 20; // 20px max movement
+    const moveY = y * 20; // 20px max movement
+    
+    this.renderer.setStyle(headerBanner, 'transform', `translate(${moveX}px, ${moveY}px) scale(1.1)`);
   }
 
 }

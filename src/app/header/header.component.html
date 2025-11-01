@@ -10,7 +10,7 @@
     <div class="position-absolute top-0 start-0 w-100 h-100 header-banner"></div>
     <div class="position-relative z-1 d-flex flex-column align-items-center justify-content-center w-100 h-100">
       <div class="d-flex flex-column align-items-center justify-content-center mb-3 gap-2">
-        <img src="/assets/tempest-reef-logo.svg" alt="Tempest Reef Logo" style="width: 120px; height: 120px;" />
+        <img src="/assets/tempest-reef-logo.svg" alt="Tempest Reef Logo" class="logo-animated" style="width: 120px; height: 120px;" />
         <h1 class="display-1 mb-1 text-white papyrus-font text-center title-container">
           <span *ngFor="let char of titleChars" class="title-char">{{ char === ' ' ? '\u00A0' : char }}</span>
         </h1>
@@ -42,8 +42,5 @@
         </a>
       </div>
     </div>
-  </div>
-  <div>
-    <app-swipe-element [swipeUp]="true"></app-swipe-element>
   </div>
 </header>
