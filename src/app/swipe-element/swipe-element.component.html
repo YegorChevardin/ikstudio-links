@@ -1,0 +1,10 @@
+<div class="floating-swipe-indicator">
+    <div class="swipe-content" [class.swipe-up]="swipeUp" [class.swipe-down]="!swipeUp">
+        <div class="swipe-arrow animate-bounce">
+            {{ swipeUp ? '↑' : '↓' }}
+        </div>
+        <div class="swipe-text">
+            {{ swipeUp ? 'Scroll Up' : 'Scroll Down' }}
+        </div>
+    </div>
+</div>

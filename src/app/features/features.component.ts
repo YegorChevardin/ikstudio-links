@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy, AfterViewInit, ElementRef, Inject, PLATFORM_ID } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { FeatureComponent } from "../feature/feature.component";
 
 export interface FeatureData {
   label: string;
@@ -9,7 +10,7 @@ export interface FeatureData {
 @Component({
   selector: 'app-features',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FeatureComponent],
   templateUrl: './features.component.html',
   styleUrl: './features.component.css'
 })

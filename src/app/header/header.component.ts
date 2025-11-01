@@ -1,10 +1,11 @@
 import { Component, OnInit, OnDestroy, NgZone, AfterViewInit, ElementRef, Renderer2, Inject, PLATFORM_ID } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { SwipeElementComponent } from "../swipe-element/swipe-element.component";
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, SwipeElementComponent],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
@@ -72,10 +73,9 @@ export class HeaderComponent implements OnInit, OnDestroy, AfterViewInit {
   private animateTitle() {
     const chars = this.el.nativeElement.querySelectorAll('.title-char');
     
-    // Add CSS animation class to each character with staggered delay
     chars.forEach((char: HTMLElement, index: number) => {
       this.renderer.addClass(char, 'animated');
-      this.renderer.setStyle(char, 'animation-delay', `${index * 0.05}s`);
+      this.renderer.setStyle(char, 'animation-delay', `${index * 0.1}s`);
     });
   }
 
