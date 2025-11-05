@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, input} from '@angular/core';
 
 @Component({
   selector: 'app-feature',
@@ -8,6 +8,6 @@ import { Component, Input } from '@angular/core';
   styleUrl: './feature.component.css'
 })
 export class FeatureComponent {
-  @Input({ required: true }) label?: string;
-  @Input({ required: true }) description?: string;
+  label = input.required<string>();
+  description = input.required<string>();
 }
