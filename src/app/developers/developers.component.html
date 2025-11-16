@@ -1,0 +1,41 @@
+<section class="developers-section">
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-12 col-lg-10 col-xl-8">
+        <div class="developers-container">
+          <div class="text-center mb-5">
+            <h2 class="display-4 text-white papyrus-font mb-3">Meet the Crew</h2>
+            <p class="lead text-light-gray">The talented developers bringing Tempest Reef to life</p>
+          </div>
+          
+          <div class="developers-grid">
+            @for (developer of developers; track $index) {
+              <div class="developer-card" [style.animation-delay]="($index * 0.2) + 's'">
+                <div class="card-background"></div>
+                <div class="card-content">
+                  <div class="developer-info text-center">
+                    <h3 class="developer-name papyrus-font text-white mb-2">{{ developer.name }}</h3>
+                    <p class="developer-role text-light-gray mb-3">{{ developer.role }}</p>
+                    <p class="developer-description text-white-50 mb-4">{{ developer.description }}</p>
+                  </div>
+                  <div class="social-links d-flex justify-content-center gap-3">
+                    @if (developer.linkedIn) {
+                      <a [href]="developer.linkedIn" target="_blank" class="social-link linkedin" aria-label="LinkedIn Profile">
+                        <lucide-icon [img]="socialIcons.Linkedin" class="social-icon"></lucide-icon>
+                      </a>
+                    }
+                    @if (developer.github) {
+                      <a [href]="developer.github" target="_blank" class="social-link github" aria-label="GitHub Profile">
+                        <lucide-icon [img]="socialIcons.Github" class="social-icon"></lucide-icon>
+                      </a>
+                    }
+                  </div>
+                </div>
+              </div>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

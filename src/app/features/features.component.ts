@@ -1,39 +1,61 @@
-import { Component, OnInit, OnDestroy, AfterViewInit, ElementRef, Inject, PLATFORM_ID } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewInit, ElementRef, Inject, PLATFORM_ID, signal } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { FeatureComponent } from "../feature/feature.component";
+import { FeatureModalComponent } from "../feature-modal/feature-modal.component";
 
 export interface FeatureData {
+  id: string;
   label: string;
   description: string;
+  icon: string;
+  iconColor?: string;
 }
 
 @Component({
   selector: 'app-features',
   standalone: true,
-  imports: [CommonModule, FeatureComponent],
+  imports: [CommonModule, FeatureComponent, FeatureModalComponent],
   templateUrl: './features.component.html',
   styleUrl: './features.component.css'
 })
 export class FeaturesComponent implements OnInit, OnDestroy, AfterViewInit {
   features: FeatureData[] = [
     {
+      id: 'survive-the-storm',
       label: "Survive the Storm",
-      description: "Navigate treacherous waters and weather devastating storms as you fight to keep your crew alive in the unforgiving Tempest Reef."
+      description: "Navigate treacherous waters and weather devastating storms as you fight to keep your crew alive in the unforgiving Tempest Reef.",
+      icon: "Zap",
+      iconColor: "#ff6b35"
     },
     {
+      id: 'explore-mysterious-islands',
       label: "Explore Mysterious Islands",
-      description: "Discover hidden treasures, ancient ruins, and dangerous creatures on uncharted islands scattered throughout the reef."
+      description: "Discover hidden treasures, ancient ruins, and dangerous creatures on uncharted islands scattered throughout the reef.",
+      icon: "Compass",
+      iconColor: "#4ecdc4"
     },
     {
+      id: 'form-alliances',
       label: "Form Alliances",
-      description: "Team up with other players to take on powerful sea monsters, raid enemy strongholds, or engage in thrilling naval battles."
+      description: "Team up with other players to take on powerful sea monsters, raid enemy strongholds, or engage in thrilling naval battles.",
+      icon: "Users",
+      iconColor: "#45b7d1"
+    },
+    {
+      id: 'treasure-hunting',
+      label: "Treasure Hunting",
+      description: "Search for buried treasure, decode ancient maps, and dive into underwater ruins to claim legendary artifacts.",
+      icon: "Crown",
+      iconColor: "#f39c12"
     }
   ];
   
   currentFeatureIndex: number = 0;
   private intervalId: any;
-  private readonly AUTO_ROTATE_INTERVAL = 5000; // 5 seconds
+  private readonly AUTO_ROTATE_INTERVAL = 5000;
   private isBrowser: boolean;
+
+  selectedFeature = signal<FeatureData | null>(null);
 
   constructor(
     private el: ElementRef,
@@ -139,5 +161,14 @@ export class FeaturesComponent implements OnInit, OnDestroy, AfterViewInit {
 
   get currentFeature(): FeatureData | null {
     return this.features[this.currentFeatureIndex] || null;
+  }
+
+  onSelectFeature(id: string) {
+    let feature = this.features.find(f => f.id === id)!;
+    this.selectedFeature.set(feature);
+  }
+
+  onModalClose() {
+    this.selectedFeature.set(null);
   }
 }

@@ -1,0 +1,82 @@
+app-feature-modal {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    z-index: 99999 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    pointer-events: none !important;
+    isolation: isolate !important;
+}
+
+.modal-background {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    background: rgba(0, 0, 0, 0.8) !important;
+    z-index: 99998 !important;
+    pointer-events: auto !important;
+    cursor: pointer !important;
+}
+
+.modal-content {
+    position: relative !important;
+    z-index: 99999 !important;
+    max-width: 90vw !important;
+    max-height: 90vh !important;
+    overflow-y: auto !important;
+    pointer-events: auto !important;
+    background: #1a1a1a !important;
+    border: 2px solid rgba(20, 130, 180, 0.4) !important;
+    border-radius: 8px !important;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5) !important;
+    animation: modalFadeIn 0.3s ease-out forwards !important;
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9) translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.modal-content h2 {
+    color: #ffffff !important;
+    margin-bottom: 1rem;
+}
+
+.modal-content p {
+    color: #b9bdbd !important;
+    line-height: 1.6;
+}
+
+.modal-content .btn {
+    background: rgba(20, 130, 180, 0.2) !important;
+    border: 2px solid rgba(20, 130, 180, 0.4) !important;
+    color: #ffffff !important;
+    transition: all 0.3s ease;
+}
+
+.modal-content .btn:hover {
+    background: rgba(20, 130, 180, 0.4) !important;
+    border-color: rgba(20, 130, 180, 0.6) !important;
+    transform: translateY(-2px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .modal-content {
+        max-width: 95vw;
+        max-height: 95vh;
+        margin: 1rem;
+    }
+}

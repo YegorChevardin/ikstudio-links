@@ -3,15 +3,10 @@
     <div class="row align-items-center justify-content-center">
       <div class="col-12 col-lg-10 col-xl-8">
         <div class="features-container">
-          <!-- Section Title -->
           <div class="text-center mb-5">
-            <h2 class="display-4 text-white papyrus-font mb-3">Game Features</h2>
-            <p class="lead text-light-gray">Experience the adventure that awaits you</p>
+            <h2 class="display-3 text-white papyrus-font">Game Features</h2>
           </div>
-
-          <!-- Carousel Content -->
           <div class="carousel-wrapper" *ngIf="currentFeature">
-            <!-- Navigation Arrows -->
             <button 
               class="carousel-nav carousel-nav-prev" 
               (click)="previousFeature()"
@@ -22,10 +17,12 @@
               </svg>
             </button>
 
-            <!-- Feature Content -->
             <app-feature 
-              [label]="currentFeature.label" 
-              [description]="currentFeature.description"
+              [id]="currentFeature.id"
+              [label]="currentFeature.label"
+              [icon]="currentFeature.icon"
+              [iconColor]="currentFeature.iconColor || '#1482b4'"
+              (idEvent)="onSelectFeature($event)"
             ></app-feature>
 
             <button 
@@ -39,7 +36,6 @@
             </button>
           </div>
 
-          <!-- Carousel Indicators -->
           <div class="carousel-indicators" *ngIf="features.length > 0">
             <button
               *ngFor="let feature of features; let i = index"
@@ -55,4 +51,9 @@
       </div>
     </div>
   </div>
+  <app-feature-modal
+    *ngIf="selectedFeature() as feature"
+    [feature]="feature"
+    (closeModal)="onModalClose()"
+  ></app-feature-modal>
 </section>

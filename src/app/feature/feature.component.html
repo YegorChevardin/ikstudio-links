@@ -1,21 +1,12 @@
-<div class="feature-content text-center">
-  <div class="feature-icon mb-4">
-    <svg
-      width="80"
-      height="80"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      stroke-width="1.5"
-    >
-      <circle cx="12" cy="12" r="10"></circle>
-      <polyline points="12 6 12 12 16 14"></polyline>
-    </svg>
+<div (click)="onSelect()" class="feature-content text-center hover-pointer">
+  <div class="mb-4">
+    <lucide-icon 
+      [img]="getIcon()" 
+      
+      [style.color]="iconColor()"
+    ></lucide-icon>
   </div>
   <h3 class="feature-label papyrus-font text-white mb-3">
     {{ label() }}
   </h3>
-  <p class="feature-description text-light-gray">
-    {{ description() }}
-  </p>
 </div>
