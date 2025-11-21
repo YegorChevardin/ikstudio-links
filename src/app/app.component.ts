@@ -4,11 +4,12 @@ import { HeaderComponent } from "./header/header.component";
 import { FeaturesComponent } from "./features/features.component";
 import { CopyrightContainerComponent } from "./copyright-container/copyright-container.component";
 import { DevelopersComponent } from "./developers/developers.component";
+import { SectionDividerComponent } from "./section-divider/section-divider.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, HeaderComponent, FeaturesComponent, CopyrightContainerComponent, DevelopersComponent],
+  imports: [RouterOutlet, HeaderComponent, FeaturesComponent, CopyrightContainerComponent, DevelopersComponent, SectionDividerComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

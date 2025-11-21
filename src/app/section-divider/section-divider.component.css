@@ -1,0 +1,221 @@
+.section-divider {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  background: #000000;
+  box-shadow: 
+    0 -40px 60px 20px rgba(0, 0, 0, 0.9),
+    0 40px 60px 20px rgba(0, 0, 0, 0.9),
+    0 -20px 40px 10px rgba(0, 0, 0, 0.7),
+    0 20px 40px 10px rgba(0, 0, 0, 0.7);
+}
+
+.divider-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Gradient Variant */
+.divider-gradient {
+  box-shadow: 
+    0 -40px 60px 20px rgba(0, 0, 0, 0.9),
+    0 40px 60px 20px rgba(0, 0, 0, 0.9),
+    0 -20px 40px 10px rgba(30, 58, 138, 0.1),
+    0 20px 40px 10px rgba(30, 58, 138, 0.1);
+}
+
+.divider-gradient .gradient-line {
+  width: 80%;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.8) 0%,
+    rgba(30, 58, 138, 0.6) 20%,
+    rgba(59, 130, 246, 0.8) 50%,
+    rgba(30, 58, 138, 0.6) 80%,
+    rgba(0, 0, 0, 0.8) 100%
+  );
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0%, 100% {
+    opacity: 0.5;
+    transform: scaleX(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+/* Wave Variant */
+.divider-wave {
+  background: #000000;
+  box-shadow: 
+    0 -40px 60px 20px rgba(0, 0, 0, 0.9),
+    0 40px 60px 20px rgba(0, 0, 0, 0.9),
+    0 0 30px rgba(59, 130, 246, 0.15);
+}
+
+.wave-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.wave-path {
+  fill: none;
+  stroke: rgba(59, 130, 246, 0.6);
+  stroke-width: 2;
+  filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.4));
+  animation: wave-flow 4s ease-in-out infinite;
+}
+
+@keyframes wave-flow {
+  0%, 100% {
+    stroke-dasharray: 0, 1200;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 600, 600;
+    stroke-dashoffset: -300;
+  }
+}
+
+/* Ornamental Variant */
+.divider-ornamental {
+  box-shadow: 
+    0 -40px 60px 20px rgba(0, 0, 0, 0.9),
+    0 40px 60px 20px rgba(0, 0, 0, 0.9),
+    0 0 40px rgba(59, 130, 246, 0.1);
+}
+
+.ornamental-line {
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  color: rgba(59, 130, 246, 0.7);
+}
+
+.ornament-left,
+.ornament-right {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(59, 130, 246, 0.5),
+    transparent
+  );
+  position: relative;
+  box-shadow: 0 0 8px rgba(59, 130, 246, 0.3);
+}
+
+.ornament-left {
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.8),
+    rgba(30, 58, 138, 0.6),
+    rgba(59, 130, 246, 0.5)
+  );
+}
+
+.ornament-right {
+  background: linear-gradient(
+    90deg,
+    rgba(59, 130, 246, 0.5),
+    rgba(30, 58, 138, 0.6),
+    rgba(0, 0, 0, 0.8)
+  );
+}
+
+.ornament-center {
+  animation: rotate-ornament 8s linear infinite;
+}
+
+@keyframes rotate-ornament {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.ornament-center svg {
+  display: block;
+  filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.6));
+}
+
+/* Glow Variant */
+.divider-glow {
+  box-shadow: 
+    0 -40px 60px 20px rgba(0, 0, 0, 0.9),
+    0 40px 60px 20px rgba(0, 0, 0, 0.9),
+    0 0 50px rgba(59, 130, 246, 0.2);
+}
+
+.glow-line {
+  width: 80%;
+  height: 3px;
+  position: relative;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.9),
+    rgba(30, 58, 138, 0.4),
+    rgba(0, 0, 0, 0.9)
+  );
+  border-radius: 2px;
+  overflow: hidden;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.8);
+}
+
+.glow-pulse {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(59, 130, 246, 0.9),
+    rgba(96, 165, 250, 1),
+    rgba(59, 130, 246, 0.9),
+    transparent
+  );
+  animation: pulse-move 3s ease-in-out infinite;
+  box-shadow: 
+    0 0 25px rgba(59, 130, 246, 0.8),
+    0 0 50px rgba(59, 130, 246, 0.5),
+    0 0 75px rgba(59, 130, 246, 0.3);
+}
+
+@keyframes pulse-move {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .gradient-line,
+  .ornamental-line,
+  .glow-line {
+    width: 90%;
+  }
+}
+
