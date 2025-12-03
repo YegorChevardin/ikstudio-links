@@ -52,8 +52,7 @@ export class HeaderComponent implements OnInit, OnDestroy, AfterViewInit {
 
   private updateTimer() {
     const now = new Date();
-    const nextYear = now.getFullYear() + 1;
-    const newYear = new Date(`January 1, ${nextYear} 00:00:00`);
+    const newYear = new Date(`May 5, 2026 00:00:00`);
     const diff = newYear.getTime() - now.getTime();
 
     this.ngZone.run(() => {
